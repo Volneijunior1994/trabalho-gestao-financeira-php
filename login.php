@@ -1,5 +1,5 @@
 <?php
-// login.php - Página de autenticação do usuário
+
 
 require_once 'config.php';
 require_once 'funcoes.php';
@@ -7,18 +7,17 @@ require_once 'funcoes.php';
 $erro = '';
 $sucesso = '';
 
-// Se já está autenticado, redireciona para o dashboard
 if (estaAutenticado()) {
     header('Location: index.php');
     exit();
 }
 
-// Processar formulário de login
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = isset($_POST['usuario']) ? trim($_POST['usuario']) : '';
     $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
     
-    // Validar credenciais
+
     if ($usuario === USUARIO_VALIDO && password_verify($senha, SENHA_VALIDA)) {
         $_SESSION['usuario_logado'] = true;
         $_SESSION['usuario'] = $usuario;
