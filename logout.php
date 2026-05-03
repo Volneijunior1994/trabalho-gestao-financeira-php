@@ -1,0 +1,12 @@
+<?php
+// logout.php - Página de logout do sistema
+
+require_once 'config.php';
+
+// Destruir a sessão
+session_destroy();
+
+// Redirecionar para a página de login
+header('Location: login.php');
+exit();
+?>
