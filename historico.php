@@ -1,13 +1,13 @@
 <?php
-// historico.php - Página de histórico de transações
+
 
 require_once 'config.php';
 require_once 'funcoes.php';
 
-// Verificar se o usuário está autenticado
+
 verificarAutenticacao();
 
-// Calcular saldo e totalizações
+
 $saldo = calcularSaldo();
 $totalReceitas = 0;
 $totalDespesas = 0;
@@ -295,7 +295,6 @@ if (isset($_SESSION['transacoes']) && is_array($_SESSION['transacoes'])) {
                     </div>
                 </div>
                 
-                <!-- Botão Voltar -->
                 <div class="text-center">
                     <a href="index.php" class="btn btn-primary">← Voltar ao Dashboard</a>
                 </div>
