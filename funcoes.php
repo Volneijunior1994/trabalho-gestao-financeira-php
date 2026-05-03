@@ -1,10 +1,5 @@
 <?php
-// funcoes.php - Funções auxiliares para cálculos e formatação
 
-/**
- * Calcula o saldo total baseado nas transações da sessão
- * @return float Saldo total
- */
 function calcularSaldo() {
     $saldo = 0;
     
@@ -21,19 +16,12 @@ function calcularSaldo() {
     return $saldo;
 }
 
-/**
- * Formata um valor monetário para o padrão brasileiro (R$)
- * @param float $valor Valor a ser formatado
- * @return string Valor formatado
- */
+
 function formatarMoeda($valor) {
     return 'R$ ' . number_format($valor, 2, ',', '.');
 }
 
-/**
- * Calcula o percentual de uma despesa em relação ao total de despesas
- * @return array Array com nome da transação e seu percentual
- */
+
 function calcularPercentualDespesas() {
     $totalDespesas = 0;
     $despesas = array();
@@ -63,12 +51,7 @@ function calcularPercentualDespesas() {
     return $resultado;
 }
 
-/**
- * Adiciona uma nova transação à sessão
- * @param string $nome Nome da transação
- * @param float $valor Valor da transação
- * @param string $tipo Tipo: 'receita' ou 'despesa'
- */
+
 function adicionarTransacao($nome, $valor, $tipo) {
     if (!isset($_SESSION['transacoes'])) {
         $_SESSION['transacoes'] = array();
@@ -84,25 +67,18 @@ function adicionarTransacao($nome, $valor, $tipo) {
     $_SESSION['transacoes'][] = $transacao;
 }
 
-/**
- * Limpa o histórico de transações
- */
+
 function limparHistorico() {
     $_SESSION['transacoes'] = array();
     $_SESSION['saldo'] = 0;
 }
 
-/**
- * Verifica se o usuário está autenticado
- * @return bool True se autenticado, false caso contrário
- */
+
 function estaAutenticado() {
     return isset($_SESSION['usuario_logado']) && $_SESSION['usuario_logado'] === true;
 }
 
-/**
- * Redireciona para a página de login se não estiver autenticado
- */
+
 function verificarAutenticacao() {
     if (!estaAutenticado()) {
         header('Location: login.php');
