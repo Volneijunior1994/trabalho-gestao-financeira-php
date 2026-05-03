@@ -1,23 +1,23 @@
 <?php
-// index.php - Dashboard principal do gestor financeiro
+
 
 require_once 'config.php';
 require_once 'funcoes.php';
 
-// Verificar se o usuário está autenticado
+
 verificarAutenticacao();
 
 $mensagem = '';
 $tipo_mensagem = '';
 
-// Processar formulário de nova transação
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     if ($_POST['acao'] === 'adicionar') {
         $nome = isset($_POST['nome']) ? trim($_POST['nome']) : '';
         $valor = isset($_POST['valor']) ? $_POST['valor'] : '';
         $tipo = isset($_POST['tipo']) ? $_POST['tipo'] : '';
         
-        // Validar dados
+      
         if (empty($nome) || empty($valor) || empty($tipo)) {
             $mensagem = 'Por favor, preencha todos os campos!';
             $tipo_mensagem = 'danger';
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
     }
 }
 
-// Calcular saldo atual
+
 $saldo = calcularSaldo();
 $percentuais = calcularPercentualDespesas();
 ?>
